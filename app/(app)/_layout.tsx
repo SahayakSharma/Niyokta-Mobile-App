@@ -1,9 +1,7 @@
 import { useAuth } from "@/context/AuthContext";
-import { Stack, useRouter } from "expo-router";
+import { Tabs, useRouter } from "expo-router";
 import { useEffect } from "react";
-import { GestureHandlerRootView } from 'react-native-gesture-handler';
-import { Drawer } from 'expo-router/drawer';
-
+import { User,Briefcase } from "lucide-react-native";
 export default function AppLayout() {
     const { user, loading } = useAuth();
 
@@ -15,17 +13,24 @@ export default function AppLayout() {
     }, [user, loading])
 
     return (
-        <GestureHandlerRootView style={{ flex: 1 }}>
-            <Drawer screenOptions={{
-                headerShown:true
-            }}>
-                <Drawer.Screen name="Dashboard" options={{
-                    drawerLabel:"The Dashboard"
-                }}/>
-                <Drawer.Screen name="index" options={{
-                    drawerLabel:"Home"
-                }}/>
-            </Drawer>
-        </GestureHandlerRootView>
+        <Tabs screenOptions={{
+            headerShown:false,
+            tabBarLabelStyle:{
+                fontSize:15
+            }
+        }}>
+            <Tabs.Screen name="freelancer" options={{
+                title:"Freelancer",
+                tabBarIcon:()=>{
+                    return <User />
+                }
+            }}/>
+            <Tabs.Screen name="client" options={{
+                title:"Client",
+                tabBarIcon:()=>{
+                    return <Briefcase />
+                }
+            }}/>
+        </Tabs>
     )
 }

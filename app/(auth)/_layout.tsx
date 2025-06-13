@@ -9,7 +9,7 @@ export default function AuthLayout(){
 
     useEffect(()=>{
         if(!loading && user){
-            router.replace("/(app)")
+            router.replace("/(app)/client/create-project")
         }
     },[user,loading])
 

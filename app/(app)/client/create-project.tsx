@@ -1,9 +1,9 @@
 import { View,Text } from "react-native";
 
-export default function Dashboard(){
+export default function CreateProject(){
     return(
         <View>
-            <Text>This is dashboard</Text>
+            <Text>create project</Text>
         </View>
     )
 }
